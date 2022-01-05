@@ -129,7 +129,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
     <CheckBox
-        android:id="@+id/cb_mvc"
+        android:id="@+id/cb_mdn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="莫德納"
@@ -137,11 +137,11 @@
         app:layout_constraintTop_toTopOf="@+id/cb_bnt" />
 
     <CheckBox
-        android:id="@+id/cb_mdn"
+        android:id="@+id/cb_mvc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="高端"
-        app:layout_constraintStart_toEndOf="@+id/cb_mvc"
+        app:layout_constraintStart_toEndOf="@+id/cb_mdn"
         app:layout_constraintTop_toTopOf="@+id/cb_bnt" />
 
     <Button
