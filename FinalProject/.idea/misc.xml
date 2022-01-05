@@ -3,9 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/User/AndroidStudioProjects/FinalProject/app/src/main/res/layout/activity_book.xml" value="0.23233695652173914" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/FinalProject/app/src/main/res/layout/activity_book.xml" value="0.33" />
         <entry key="..\:/Users/User/AndroidStudioProjects/FinalProject/app/src/main/res/layout/activity_check.xml" value="0.23233695652173914" />
-        <entry key="..\:/Users/User/AndroidStudioProjects/FinalProject/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/FinalProject/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/User/AndroidStudioProjects/FinalProject/app/src/main/res/layout/activity_main2.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/User/AndroidStudioProjects/FinalProject/app/src/main/res/layout/activity_register.xml" value="0.40555555555555556" />
         <entry key="..\:/Users/User/AndroidStudioProjects/FinalProject/app/src/main/res/layout/book.xml" value="0.33" />
@@ -23,5 +23,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.40555555555555556" />
+      </ProjectState>
+    </option>
   </component>
 </project>
