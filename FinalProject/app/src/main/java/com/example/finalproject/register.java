@@ -22,7 +22,7 @@ public class register extends AppCompatActivity {
     private Button btn_register;
     private CheckBox cb_bnt, cb_mvc, cb_mdn;
     private Spinner  spinner;
-    private String place/*empty0=" "*/;
+    private String place;
     private int v[] = new int[3];
 
     private SQLiteDatabase dbrw;
@@ -118,7 +118,7 @@ public class register extends AppCompatActivity {
                     Toast.makeText(register.this,"手機號碼錯誤",
                             Toast.LENGTH_SHORT).show();
                 }
-                else if(vac[0]==0||vac[1]==0||vac[2]==0){
+                else if(v[0]==0&&v[1]==0&&v[2]==0){
                     Toast.makeText(register.this,"請選擇疫苗",
                             Toast.LENGTH_SHORT).show();
                 }
@@ -148,7 +148,6 @@ public class register extends AppCompatActivity {
     @Override
     public void onDestroy(){
         super.onDestroy();
-        //關閉資料庫
         dbrw.close();
     }
 }
