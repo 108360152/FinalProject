@@ -18,12 +18,12 @@ import android.widget.Toast;
 
 public class register extends AppCompatActivity {
 
-    private EditText ed_nhi, ed_ic, ed_name, ed_phone;
+    private EditText ed_nhi, ed_ic, ed_name, ed_phone,set_nhi;
     private Button btn_register;
     private CheckBox cb_bnt, cb_mvc, cb_mdn;
     private Spinner  spinner;
-    private String place;
-    private int vac[] = new int[3];
+    private String place/*empty0=" "*/;
+    private int v[] = new int[3];
 
     private SQLiteDatabase dbrw;
 
@@ -51,7 +51,7 @@ public class register extends AppCompatActivity {
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
                 place = dataArray[position];
             }
 
@@ -65,10 +65,10 @@ public class register extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if(b==true){
-                    vac[0] = 1;
+                    v[0] = 1;
                 }
                 else{
-                    vac[0] = 0;
+                    v[0] = 0;
                 }
             }
         });
@@ -77,10 +77,10 @@ public class register extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if(b==true){
-                    vac[1] = 1;
+                    v[1] = 1;
                 }
                 else{
-                    vac[1] = 0;
+                    v[1] = 0;
                 }
             }
         });
@@ -89,10 +89,10 @@ public class register extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if(b==true){
-                    vac[2] = 1;
+                    v[2] = 1;
                 }
                 else{
-                    vac[2] = 0;
+                    v[2] = 0;
                 }
             }
         });
@@ -111,11 +111,11 @@ public class register extends AppCompatActivity {
                         dbrw.execSQL("INSERT INTO myTable(nhi,ic,name,phone,place,bnt,mdn,mvc)" +
                                 "VALUES(?,?,?,?,?,?,?,?)",new Object[]{ed_nhi.getText().toString(),
                                 ed_ic.getText().toString(),ed_name.getText().toString(),
-                                ed_phone.getText().toString(), place, vac[0], vac[1], vac[2]});
+                                ed_phone.getText().toString(), place, v[0], v[1], v[2]});
                         Toast.makeText(register.this,
                                 "登記成功"+ed_nhi.getText().toString()+
                                         ed_ic.getText().toString()+ed_name.getText().toString()+
-                                        ed_phone.getText().toString()+place+vac[0]+vac[1]+vac[2],
+                                        ed_phone.getText().toString()+place+v[0]+v[1]+v[2],
                                 Toast.LENGTH_SHORT).show();
                         //清空輸入框
                         /*ed_nhi.setText("");
