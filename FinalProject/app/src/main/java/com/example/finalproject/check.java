@@ -48,13 +48,19 @@ public class check extends AppCompatActivity {
                             "LIKE '"+ed_idd.getText().toString()+"'",null);
                 c.moveToFirst();
                 try {
-                    if (ed_idd.getText().toString().equals(c.getString(0))) {
+                    if (ed_idd.getText().toString().equals(c.getString(0))&&!c.getString(8).equals("0")) {
                         tv_ic.setText(c.getString(1));
                         tv_name.setText(c.getString(2));
                         tv_phone.setText(c.getString(3));
                         tv_vac.setText(c.getString(8));
                         tv_district.setText(c.getString(9));
                         tv_time.setText(c.getString(10));
+                    }
+                    else{
+                        Toast.makeText(check.this,"請先使用預約接種系統登錄資料"
+                                ,Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(check.this,MainActivity.class);
+                        startActivity(intent);
                     }
                 }catch (Exception e){
                     Toast.makeText(check.this,"請先使用意願登記系統登錄資料"

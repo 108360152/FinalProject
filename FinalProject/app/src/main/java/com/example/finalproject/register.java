@@ -22,7 +22,7 @@ public class register extends AppCompatActivity {
     private Button btn_register;
     private CheckBox cb_bnt, cb_mvc, cb_mdn;
     private Spinner  spinner;
-    private String place;
+    private String place,zero;
     private int v[] = new int[3];
 
     private SQLiteDatabase dbrw;
@@ -40,6 +40,7 @@ public class register extends AppCompatActivity {
         cb_bnt = findViewById(R.id.cb_bnt);
         cb_mvc = findViewById(R.id.cb_mvc);
         cb_mdn = findViewById(R.id.cb_mdn);
+        zero="0";
 
         Toast.makeText(register.this, "歡迎使用意願登記系統"
                 , Toast.LENGTH_SHORT).show();
@@ -127,15 +128,12 @@ public class register extends AppCompatActivity {
                 }
                 else{
                     try {
-                        dbrw.execSQL("INSERT INTO myTable(nhi,ic,name,phone,place,bnt,mdn,mvc)" +
-                                "VALUES(?,?,?,?,?,?,?,?)",new Object[]{ed_nhi.getText().toString(),
+                        dbrw.execSQL("INSERT INTO myTable(nhi,ic,name,phone,place,bnt,mdn,mvc,vac)" +
+                                "VALUES(?,?,?,?,?,?,?,?,?)",new Object[]{ed_nhi.getText().toString(),
                                 ed_ic.getText().toString(),ed_name.getText().toString(),
-                                ed_phone.getText().toString(), place, v[0], v[1], v[2]});
+                                ed_phone.getText().toString(), place, v[0], v[1], v[2],zero});
                         Toast.makeText(register.this,
-                                "登記成功"+ed_nhi.getText().toString()+
-                                        ed_ic.getText().toString()+ed_name.getText().toString()+
-                                        ed_phone.getText().toString()+place+v[0]+v[1]+v[2],
-                                Toast.LENGTH_SHORT).show();
+                                "登記成功",Toast.LENGTH_SHORT).show();
 
                         Intent intent = new Intent(register.this,MainActivity.class);
                         startActivity(intent);
