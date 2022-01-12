@@ -36,7 +36,9 @@ public class book extends AppCompatActivity {
         spin_place=findViewById(R.id.spinner3);
         spin_time=findViewById(R.id.spinner4);
         spin_vac = findViewById(R.id.spinner2);
+
         dbrw = new MyDBHelper(this).getWritableDatabase();
+
         String zero=Integer.toString(0);
         String one=Integer.toString(1);
 
@@ -284,7 +286,6 @@ public class book extends AppCompatActivity {
     @Override
     public void onDestroy(){
         super.onDestroy();
-        //關閉資料庫
         dbrw.close();
     }
     

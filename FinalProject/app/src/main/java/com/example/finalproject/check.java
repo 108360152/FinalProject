@@ -22,14 +22,16 @@ public class check extends AppCompatActivity {
         btn_idd=findViewById(R.id.button4);
         ed_id=findViewById(R.id.editTextTextPersonName5);
 
+        dbrw = new MyDBHelper(this).getWritableDatabase();
+
         Toast.makeText(check.this, "歡迎使用疫苗預約系統"
                 , Toast.LENGTH_SHORT).show();
 
         btn_idd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(check.this, "歡迎使用疫苗預約系統"
-                        , Toast.LENGTH_SHORT).show();
+                /*Toast.makeText(check.this, "歡迎使用疫苗預約系統"
+                        , Toast.LENGTH_SHORT).show();*/
                 Cursor c;
                 if(ed_id.length()<1)
                     c = dbrw.rawQuery("SELECT * FROM myTable",null);
@@ -45,12 +47,20 @@ public class check extends AppCompatActivity {
                                 , Toast.LENGTH_SHORT).show();
                     }
                 }catch (Exception e){
+
                     Toast.makeText(check.this,"請先使用意願登記系統登錄資料"
                             ,Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(check.this,MainActivity.class);
                     startActivity(intent);
                 }
+
             }
         });
+    }
+    
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
+        dbrw.close();
     }
 }

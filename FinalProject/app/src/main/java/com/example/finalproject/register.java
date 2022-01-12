@@ -106,6 +106,22 @@ public class register extends AppCompatActivity {
                 if(ed_nhi.length()<1||ed_ic.length()<1||ed_name.length()<1||ed_phone.length()<1)
                     Toast.makeText(register.this,"欄位請勿留空",
                             Toast.LENGTH_SHORT).show();
+                else if(ed_nhi.length()!=16){
+                    Toast.makeText(register.this,"健保卡卡號錯誤",
+                            Toast.LENGTH_SHORT).show();
+                }
+                else if(ed_ic.length()!=10){
+                    Toast.makeText(register.this,"身份證錯誤",
+                            Toast.LENGTH_SHORT).show();
+                }
+                else if(ed_phone.length()!=10){
+                    Toast.makeText(register.this,"手機號碼錯誤",
+                            Toast.LENGTH_SHORT).show();
+                }
+                else if(v[0]==0&&v[1]==0&&v[2]==0){
+                    Toast.makeText(register.this,"請選擇疫苗",
+                            Toast.LENGTH_SHORT).show();
+                }
                 else{
                     try {
                         dbrw.execSQL("INSERT INTO myTable(nhi,ic,name,phone,place,bnt,mdn,mvc)" +
@@ -117,31 +133,21 @@ public class register extends AppCompatActivity {
                                         ed_ic.getText().toString()+ed_name.getText().toString()+
                                         ed_phone.getText().toString()+place+v[0]+v[1]+v[2],
                                 Toast.LENGTH_SHORT).show();
-                        //清空輸入框
-                        /*ed_nhi.setText("");
-                        ed_ic.setText("");
-                        ed_name.setText("");
-                        ed_phone.setText("");*/
+
+                        Intent intent = new Intent(register.this,MainActivity.class);
+                        startActivity(intent);
                     }
                     catch (Exception e){
                         Toast.makeText(register.this,"登記失敗:"+
                                 e.toString(),Toast.LENGTH_LONG).show();
                     }
                 }
-
-                Intent intent = new Intent(register.this,MainActivity.class);
-                startActivity(intent);
             }
         });
-
-
-
-
     }
     @Override
     public void onDestroy(){
         super.onDestroy();
-        //關閉資料庫
         dbrw.close();
     }
 }
