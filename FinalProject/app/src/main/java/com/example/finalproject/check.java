@@ -45,11 +45,11 @@ public class check extends AppCompatActivity {
                                 , Toast.LENGTH_SHORT).show();
                     }
                 }catch (Exception e){
-                        Toast.makeText(check.this,"請先使用意願登記系統登錄資料"
-                                ,Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(check.this,MainActivity.class);
-                        startActivity(intent);
-                    }
+                    Toast.makeText(check.this,"請先使用意願登記系統登錄資料"
+                            ,Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(check.this,MainActivity.class);
+                    startActivity(intent);
+                }
             }
         });
     }

@@ -10,10 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FinalProject">
         <activity
-            android:name=".book"
+            android:name=".check"
             android:exported="false" />
         <activity
-            android:name=".check"
+            android:name=".book"
             android:exported="false" />
         <activity
             android:name=".register"

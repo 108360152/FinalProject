@@ -22,7 +22,7 @@ public class register extends AppCompatActivity {
     private Button btn_register;
     private CheckBox cb_bnt, cb_mvc, cb_mdn;
     private Spinner  spinner;
-    private String place/*empty0=" "*/;
+    private String place;
     private int v[] = new int[3];
 
     private SQLiteDatabase dbrw;

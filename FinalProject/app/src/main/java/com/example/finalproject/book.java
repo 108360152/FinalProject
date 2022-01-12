@@ -3,6 +3,7 @@ package com.example.finalproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -35,6 +36,7 @@ public class book extends AppCompatActivity {
         spin_place=findViewById(R.id.spinner3);
         spin_time=findViewById(R.id.spinner4);
         spin_vac = findViewById(R.id.spinner2);
+        dbrw = new MyDBHelper(this).getWritableDatabase();
         String zero=Integer.toString(0);
         String one=Integer.toString(1);
 
@@ -178,9 +180,6 @@ public class book extends AppCompatActivity {
             }
         });
 
-        dbrw = new MyDBHelper(this).getWritableDatabase();
-
-
         btn_id.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -193,10 +192,6 @@ public class book extends AppCompatActivity {
                 c.moveToFirst();
                 try {
                     if (ed_id.getText().toString().equals(c.getString(0))) {
-                        Toast.makeText(book.this, "歡迎使用疫苗預約系統"
-                                , Toast.LENGTH_SHORT).show();
-                        /*Toast.makeText(book.this, c.getString(8)
-                                , Toast.LENGTH_SHORT).show();*/
                         spin_time.setAdapter(timeAdapter1);
                         if(c.getString(5).equals(zero)&&c.getString(6).equals(zero)&&c.getString(7).equals(one))
                         {
@@ -253,7 +248,6 @@ public class book extends AppCompatActivity {
                     Intent intent = new Intent(book.this,MainActivity.class);
                     startActivity(intent);
                 }
-                //關閉Cursor
                 c.close();
             }
         });
@@ -266,20 +260,20 @@ public class book extends AppCompatActivity {
                             Toast.LENGTH_SHORT).show();
                 else {
                     try {
-                        /*dbrw.execSQL("UPDATE myTable SET vac="+
-                                        vac+" WHERE nhi LIKE '"+ ed_id.getText().toString()+"'");*/
-                        /*dbrw.execSQL("UPDATE myTable SET district="+
-                                district+" WHERE nhi LIKE '"+ ed_id.getText().toString()+"'");
-                        dbrw.execSQL("UPDATE myTable SET time="+
-                                time+" WHERE nhi LIKE '"+ ed_id.getText().toString()+"'");*/
-                        Toast.makeText(book.this, "登記成功\n"+"您預約的疫苗為： "+vac + "\n接種地點為： "+district+
+                        ContentValues cv = new ContentValues();
+                        cv.put("vac",vac);
+                        cv.put("district",district);
+                        cv.put("time",time);
+
+                        dbrw.update("myTable",cv,"nhi = ?", new String[]{ed_id.getText().toString()});
+                        Toast.makeText(book.this, "預約成功\n"+"您預約的疫苗為： "+vac + "\n接種地點為： "+district+
                                 "\n接種時間為："+time,
                                 Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(book.this,MainActivity.class);
                         startActivity(intent);
 
                     } catch (Exception e) {
-                        Toast.makeText(book.this, "登記失敗:" +
+                        Toast.makeText(book.this, "預約失敗:" +
                                 e.toString(), Toast.LENGTH_LONG).show();
 
                     }
@@ -287,7 +281,12 @@ public class book extends AppCompatActivity {
             }
         });
     }
-
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
+        //關閉資料庫
+        dbrw.close();
+    }
     
 }
 
