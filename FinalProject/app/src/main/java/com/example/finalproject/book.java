@@ -38,6 +38,8 @@ public class book extends AppCompatActivity {
         spin_vac = findViewById(R.id.spinner2);
 
         dbrw = new MyDBHelper(this).getWritableDatabase();
+        Toast.makeText(book.this, "歡迎使用預約接種系統"
+                , Toast.LENGTH_SHORT).show();
 
         String zero=Integer.toString(0);
         String one=Integer.toString(1);

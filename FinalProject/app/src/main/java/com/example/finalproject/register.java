@@ -41,6 +41,9 @@ public class register extends AppCompatActivity {
         cb_mvc = findViewById(R.id.cb_mvc);
         cb_mdn = findViewById(R.id.cb_mdn);
 
+        Toast.makeText(register.this, "歡迎使用意願登記系統"
+                , Toast.LENGTH_SHORT).show();
+
         String[] dataArray = new String[]{"臺北","新北"};
 
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this,
